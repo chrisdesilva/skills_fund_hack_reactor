@@ -15,6 +15,7 @@ import TermInfo from './terminfo'
 import FAQ from './faq'
 import Eligibility from './eligibility'
 import ContactForm from './contactform'
+import { schoolName } from '../constants/programInfo'
 
 
 class Homepage extends React.Component {
