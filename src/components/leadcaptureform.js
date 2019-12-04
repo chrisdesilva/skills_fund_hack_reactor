@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import ebook from '../images/ebook.jpg'
+import ebook from '../images/WomanClimber_Color.png'
 import { schoolName,skfURL } from '../constants/programInfo'
 
 const LeadCaptureForm = props => {
@@ -64,7 +64,7 @@ const LeadCaptureForm = props => {
     }
 
     return (
-        <div className="flex flex-col items-center justify-center pt-8">
+        <div className="flex flex-col items-center justify-center pt-8 bg-gray-100">
             <h2>Get a Head Start</h2>
             <div>
                 <img className="h-64" src={ebook} alt="step-by-step guide to paying for your program" loading="lazy"/>
@@ -73,13 +73,13 @@ const LeadCaptureForm = props => {
                 <p>We'll send you our step-by-step guide to paying for your program.</p>
                 <form className="lead_capture program-apply flex flex-col items-center" onSubmit={handleSubmit}>
                 <label htmlFor="email">Email address</label>
-                <input className="border-2 rounded border-primary text-center py-2 mb-4 w-64" type="email" name="email" placeholder="Enter your email address" onChange={handleChange} value={email} required />
+                <input aria-label="email" id="email" className="border-2 rounded border-gray-800 text-center py-2 mb-4 w-64" type="email" name="email" placeholder="Enter your email address" onChange={handleChange} value={email} required />
                 <div className="hidden">
                     <input type="text" name="Stakeholder Type" value="Student" readOnly/>
                     <input type="text" name="Lead Cycle" value="Lead Capture" readOnly/>
                     <input type="text" name="School" value={schoolName} readOnly/>
                 </div>
-                {thankYou ? <p className="text-center">Thank you, your guide will be in your inbox soon!</p>: <input className="cursor-pointer opacityApply uppercase bg-primary p-3 mb-4 w-48 rounded-full shadow-lg text-white" value="Send me the guide!" id="leadCaptureSubmitBtn" type="submit"/>}
+                {thankYou ? <p className="text-center">Thank you, your guide will be in your inbox soon!</p>: <input className="cursor-pointer opacityApply uppercase bg-primary p-3 mb-4 w-48 rounded-full text-white" value="Send me the guide!" id="leadCaptureSubmitBtn" type="submit"/>}
             </form>
             </div>
         </div>
