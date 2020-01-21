@@ -98,7 +98,7 @@ const LoanCalculator = props => {
 
         // check to see if the program has multiple locations and set the program max based on individual cities
         if(programLoanInfo[programIndex]['showMetros']){
-            setProgramMax(metros[metroIndex]['maxLoanAmt'])
+            setProgramMax(programLoanInfo[programIndex]['metros'][metroIndex]['loanInfo']['maxLoanAmt'])
         } else {
             setProgramMax(programLoanInfo[programIndex]['loanInfo']['maxLoanAmt'])
         }
@@ -117,12 +117,16 @@ const LoanCalculator = props => {
     }, [monthlyPayment])
 
     useEffect(() => {
+        calculateTotalPayment()
+    }, [loanType])
+
+    useEffect(() => {
         if(loanType === '0') {
             setNonPaymentPeriod(programLoanInfo[programIndex]['loanInfo']['0']['k'])
         }
     }, [loanType])
 
-    useEffect(() => { // watches for changes to metroIndex, updates dropdown/loan info accordingly
+    useEffect(() => { // watches for changes to metroIndex, updates dropdown/loan info accordingly 
         setLoanInformation(programLoanInfo[programIndex]['metros'][metroIndex]['loanInfo'])
     }, [metroIndex])
 
@@ -138,36 +142,44 @@ const LoanCalculator = props => {
                         </div>
                         <div className="w-full md:w-1/2 lg:w-1/3"><Image /></div>
                     </div>
+                    
+                    <div>
+                        {faq.multiPrograms ?
+                            <>
+                            <label className="text-sm" htmlFor="program">Select your program</label>
+                            <div className="loanCalculator__selectInput">    
+                                <select id="program" defaultValue={'default'} onChange={handleProgramName}>
+                                    {programLoanInfo.map((program, i) => <option label={program.name} value={i} key={program.name}>{program.name}</option>)}
+                                </select>
+                            </div>
+                            </>
+                            :
+                            null
+                        }
 
-                    <label className="text-sm" htmlFor="program">Select your program</label>
-                    <div className="loanCalculator__selectInput">    
-                        <select id="program" defaultValue={'default'} onChange={handleProgramName}>
-                            {programLoanInfo.map((program, i) => <option label={program.name} value={i} key={program.name}>{program.name}</option>)}
-                        </select>
+                        <p>{` `}</p>
+
+                        <label className={showLoanTypes ? "text-sm" : "hide"} htmlFor="program">Select your loan type</label>
+                        <div className={showLoanTypes ? "loanCalculator__selectInput" : "hide"}>
+                            <select defaultValue={'default'} onChange={handleLoanType}>
+                                <option value="0">Interest-Only</option>
+                                <option value="1">Immediate Repayment</option>
+                            </select>
+                        </div>
+
+                        <p>{` `}</p>
+                        
+                        <label className={multiMetros ? "text-sm" : "hide"} htmlFor="program">Select your location</label>
+                        <div className={multiMetros ? "loanCalculator__selectInput" : "hide"}>
+                            <select defaultValue={'default'} onChange={handleMetro}>
+                                {metros.map((city, i) => <option label={city.location} key={city.location} value={i}>{city.location}</option>)}
+                            </select>
+                        </div>
                     </div>
-
-                    <p>{` `}</p>
-
-                    <Collapse className="loanCalculator__selectInput" isOpened={showLoanTypes}>
-                        <select defaultValue={'default'} onChange={handleLoanType}>
-                            <option label="select your loan type" disabled value="default">Select your loan type</option>
-                            <option label="interest only" value="0">Interest-Only</option>
-                            <option label="immediate repayment" value="1">Immediate Repayment</option>
-                        </select>
-                    </Collapse>
-
-                    <p>{` `}</p>
-
-                    <Collapse className="loanCalculator__selectInput" isOpened={multiMetros}>
-                        <select defaultValue={'default'} onChange={handleMetro}>
-                            <option label="select your location" disabled value="default">Select your location</option>
-                            {metros.map((city, i) => <option label={city.location} key={city.location} value={i}>{city.location}</option>)}
-                        </select>
-                    </Collapse>
                 </div>
 
                 <div className="loanCalculator__slider flex flex-col items-center px-4">
-                    <input aria-label="loan-calculator-slider" className="loanCalculator__input w-full lg:w-1/2 mb-2" onChange={handleSliderAmt} onTouchEnd={calculateMonthlyPayment} onMouseUp={calculateMonthlyPayment} type="range" min="2000" step="5" max={programMax} value={loanValue}/>
+                    <input aria-label="loan-calculator-slider" className="loanCalculator__input w-full lg:w-1/2 mb-2" onChange={handleSliderAmt} onBlur={handleSliderAmt} onTouchEnd={calculateMonthlyPayment} onMouseUp={calculateMonthlyPayment} onKeyUp={calculateMonthlyPayment} type="range" min="2000" step="5" max={programMax} value={loanValue}/>
                     <div className="loanCalculator__labels flex justify-between w-full lg:w-1/2">
                         <p>Min<br/>$2,000</p>
                         <p className="text-center">Loan Amount<br/><span className="loanCalculator__amount">{formatter.format(loanValue)}</span></p>
@@ -176,27 +188,31 @@ const LoanCalculator = props => {
                     {/* <span className="loanCalculator__disclaimers" onClick={props.toggleModal}>Disclaimers</span> */}
                 </div>
                 <div className="loanCalculator__monthlyPayments flex my-8">
-                <div className="loanCalculator__36months w-1/2">
+                <div className={faq.multipleLoanLengths ? "loanCalculator__36months w-1/2" : "loanCalculator__36months w-full"}>
                     {/* <h3 className="text-md text-center mb-1">{loanType === "0" ? <span className={loanType === "0" ? "show" : "hide"}>Interest-Only</span> : <span className={loanType === "1" ? "show" : "hide"}>Immediate Repayment</span>}</h3> */}
                     <h3 className="text-center mb-2">36 Month Option</h3>
                     <h4 className="text-center">{loanInformation[loanType]['apr36']}% APR*</h4>
                     <span className={loanType === "0" ? "show" : "hide"}><><p className="loanCalculator__paymentAmounts text-3xl text-primary font-bold mb-1 text-center">${interestPayment.payment36}</p><p className="loanCalculator__paymentLabel text-center text-xs">Monthly Payments in School</p></></span>
                     <div className={loanType === "0" ? "show" : "show move"}>
                         <p className="loanCalculator__paymentAmounts text-3xl text-primary font-bold mb-1 text-center">${monthlyPayment.payment36}</p><p className="loanCalculator__paymentLabel text-center text-xs">Monthly Payments{loanType === "0" ? " After Graduation" : null}</p>
-                        <p className="loanCalculator__paymentAmounts text-3xl text-primary font-bold mb-1 text-center">{formatterWithCents.format(totalPayment.payment36)}</p><p className="loanCalculator__paymentLabel text-center text-xs">Total Cost</p>
+                        <p className="loanCalculator__paymentAmounts text-3xl text-primary font-bold mb-1 text-center">{formatterWithCents.format(totalPayment.payment36)}</p><p className="loanCalculator__paymentLabel text-center text-xs">Total Cost of Loan</p>
                     </div>
                 </div>
                 
-                <div className="loanCalculator__60months w-1/2">
-                    {/* <h3 className="text-md text-center mb-1">{loanType === "0" ? <span className={loanType === "0" ? "show" : "hide"}>Interest-Only</span> : <span className={loanType === "1" ? "show" : "hide"}>Immediate Repayment</span>}</h3> */}
-                    <h3 className="text-center mb-2">60 Month Option</h3>
-                    <h4 className="text-center">{loanInformation[loanType]['apr60']}% APR*</h4>
-                    <span className={loanType === "0" ? "show" : "hide"}><><p className="loanCalculator__paymentAmounts text-3xl text-primary font-bold mb-1 text-center">${interestPayment.payment60}</p><p className="loanCalculator__paymentLabel text-center text-xs">Monthly Payments in School</p></></span>
-                    <div className={loanType === "0" ? "show" : "show move"}>
-                        <p className="loanCalculator__paymentAmounts text-3xl text-primary font-bold mb-1 text-center">${monthlyPayment.payment60}</p><p className="loanCalculator__paymentLabel text-center text-xs">Monthly Payments{loanType === "0" ? " After Graduation" : null}</p>
-                        <p className="loanCalculator__paymentAmounts text-3xl text-primary font-bold mb-1 text-center">{formatterWithCents.format(totalPayment.payment60)}</p><p className="loanCalculator__paymentLabel text-center text-xs">Total Cost</p>
+                {faq.multipleLoanLengths ? 
+                    <div className="loanCalculator__60months w-1/2">
+                        {/* <h3 className="text-md text-center mb-1">{loanType === "0" ? <span className={loanType === "0" ? "show" : "hide"}>Interest-Only</span> : <span className={loanType === "1" ? "show" : "hide"}>Immediate Repayment</span>}</h3> */}
+                        <h3 className="text-center mb-2">60 Month Option</h3>
+                        <h4 className="text-center">{loanInformation[loanType]['apr60']}% APR*</h4>
+                        <span className={loanType === "0" ? "show" : "hide"}><><p className="loanCalculator__paymentAmounts text-3xl text-primary font-bold mb-1 text-center">${interestPayment.payment60}</p><p className="loanCalculator__paymentLabel text-center text-xs">Monthly Payments in School</p></></span>
+                        <div className={loanType === "0" ? "show" : "show move"}>
+                            <p className="loanCalculator__paymentAmounts text-3xl text-primary font-bold mb-1 text-center">${monthlyPayment.payment60}</p><p className="loanCalculator__paymentLabel text-center text-xs">Monthly Payments{loanType === "0" ? " After Graduation" : null}</p>
+                            <p className="loanCalculator__paymentAmounts text-3xl text-primary font-bold mb-1 text-center">{formatterWithCents.format(totalPayment.payment60)}</p><p className="loanCalculator__paymentLabel text-center text-xs">Total Cost of Loan</p>
+                        </div>
                     </div>
-                </div>
+                    :
+                    null
+                }
                 {/* <div className="loanCalculator__isa w-1/3">
                     <h3 className="text-md text-center mb-1"></h3>
                     <h3 className="text-center">Income Share Agreement</h3>
