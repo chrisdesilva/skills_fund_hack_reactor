@@ -108,6 +108,8 @@ export const schoolName = 'Hack Reactor';
 
 export const schoolURL = 'https://www.hackreactor.com/'; // update with url of school's website
 
+export const skfURL = 'https://hackreactor.skills.fund/'; // update with Skills Fund url
+
 export const headline = 'Learn to Code at Hack Reactor'; // update headline as appropriate
 
 export const leadContent = {

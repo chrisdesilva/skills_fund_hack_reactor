@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import ReactGA from 'react-ga';
+// import ReactGA from 'react-ga'
 import ReactPixel from 'react-facebook-pixel';
 import marching from '../images/PeopleMarchColor.png';
 import { UnmountClosed as Collapse } from 'react-collapse';
@@ -9,12 +9,12 @@ import {
 	moreThanSixPrograms,
 	programLoanInfo,
 	schoolName,
-	selectAProgram
+	selectAProgram,
+	skfURL
 } from '../constants/programInfo';
 
 const LoanApp = React.forwardRef((props, ref) => {
 	const [ email, setEmail ] = useState('');
-	const thankYouMsg = 'Thanks for applying! Your loan application has opened in a new window.';
 	const [ submitted, isSubmitted ] = useState(false);
 	const [ disclaimers, toggleDisclaimers ] = useState(false);
 	const [ loanUrl, setLoanUrl ] = useState(programLoanInfo[0].url);
@@ -22,7 +22,7 @@ const LoanApp = React.forwardRef((props, ref) => {
 	const [ activeIndex, setActiveIndex ] = useState(0); // takes in index of program to execute setActive hook
 	const [ active, setActive ] = useState(null); // sets individual programs as active or inactive to change highlight color
 	const activeClass =
-		'menu-item cursor-pointer border-2 rounded border-black text-center py-2 mb-2 bg-primary text-white';
+		'menu-item cursor-pointer border-2 rounded border-secondary text-center text-secondary py-2 mb-2';
 	const inactiveClass = 'menu-item cursor-pointer border-2 rounded border-black text-center py-2 mb-2';
 	const formName = `${props.schoolName}_apply_now program-apply flex flex-col items-center`;
 	const costOfLiving = faq.costOfLiving;
@@ -131,7 +131,7 @@ const LoanApp = React.forwardRef((props, ref) => {
 
 	// const trackGoogleAnalyticsEvent = () => {
 	//         ReactGA.event({
-	//             category: `Apply Now Button | Hack Reactor`,
+	//             category: `Apply Now Button | ${schoolName}`,
 	//             action: 'click',
 	//             label: 'submitted loan application'
 	//         })
@@ -186,7 +186,7 @@ const LoanApp = React.forwardRef((props, ref) => {
 			],
 			context: {
 				hutk: hsCookie.hubspotutk, // include this parameter and set it to the hubspotutk cookie value to enable cookie tracking on your submission
-				pageUri: `${props.pageUri}`,
+				pageUri: `${skfURL}`,
 				pageName: `${props.schoolName} | Skills Fund`,
 				ipAddress: `${props.IP}`
 			}
@@ -210,11 +210,8 @@ const LoanApp = React.forwardRef((props, ref) => {
 	};
 
 	return (
-		<div
-			ref={ref}
-			className="flex flex-col items-center justify-center pt-8 mx-2 lg:mx-10 rounded shadow-xl bg-purple-150"
-		>
-			<h2>Loan Application</h2>
+		<div ref={ref} className="flex flex-col items-center justify-center pt-8 bg-primary">
+			<h2 className="text-white">Loan Application</h2>
 			<div className="rounded shadow-2xl pt-8 px-8 mx-4 bg-white">
 				{/* update with school name, remove cost of living if school does not offer it */}
 				<h3 className="text-center font-normal">
@@ -227,9 +224,11 @@ const LoanApp = React.forwardRef((props, ref) => {
 				<form className={formName} onSubmit={handleSubmit}>
 					<label htmlFor="email">Email address</label>
 					<input
-						className="border-2 rounded border-primary text-center py-2 mb-4 w-64"
+						className="border-2 rounded border-black text-center py-2 mb-4 w-64"
 						type="email"
 						name="email"
+						id="email"
+						label="email"
 						placeholder="Enter your email address"
 						onChange={handleChange}
 						value={email}
@@ -238,7 +237,7 @@ const LoanApp = React.forwardRef((props, ref) => {
 					{multiplePrograms &&
 					!moreThanSixPrograms && (
 						<div className="w-full lg:w-64 px-8 lg:px-0">
-							<p className="text-center text-sm">Select a {props.schoolName} program</p>
+							<p className="text-center text-sm">Select your {props.schoolName} program</p>
 							{programLoanInfo.map((program, i) => {
 								return (
 									<p
@@ -263,7 +262,7 @@ const LoanApp = React.forwardRef((props, ref) => {
 							>
 								{programLoanInfo.map((program, i) => {
 									return (
-										<option key={program.name} value={i}>
+										<option label={program.name} key={program.name} value={i}>
 											{program.name}
 										</option>
 									);
@@ -284,7 +283,7 @@ const LoanApp = React.forwardRef((props, ref) => {
 						<input type="text" name="Clicked Begin Loan Application BLA" value="BLA Click" readOnly />
 					</div>
 					{submitted ? (
-						<span className="pt-4">
+						<span className="pt-4 text-center">
 							Thanks for applying! Your loan application has opened in a new window. If the application
 							does not open and pop-up blockers have been disabled, please contact{' '}
 							<a href="mailto:tech@skills.fund" className="text-primary">
@@ -293,7 +292,7 @@ const LoanApp = React.forwardRef((props, ref) => {
 						</span>
 					) : (
 						<input
-							className="opacityApply uppercase bg-primary p-3 my-4 w-48 rounded-full shadow-lg text-white cursor-pointer"
+							className="opacityApply uppercase bg-secondary p-3 my-4 w-48 rounded-full text-white cursor-pointer"
 							value="APPLY NOW"
 							id="loanAppSubmitBtn"
 							type="submit"
@@ -307,25 +306,25 @@ const LoanApp = React.forwardRef((props, ref) => {
 				</form>
 			</div>
 			{/* {onlinePrograms && 
-                    <p className="m-0 text-base pt-8">
+                    <p className="m-0 text-base pt-8 px-4 text-white">
                         <strong className="m-0">ATTENTION ONLINE STUDENTS: </strong>When entering "Applicant Information" within your loan application, <strong className="m-0">please select {schoolHQState} as "the state of the school you plan to attend."</strong>
                     </p>
                 } */}
 			<div className="px-8 text-sm">
-				{/* <p className="text-center pt-8">If you are a cosigner, begin the addendum now by clicking <a className="text-primary" href="https://sf.privateloan.studentloan.org/Cosigner.do?execution=e1s1" rel="noreferrer noopener" target="_blank">here</a>.</p> */}
+				{/* <p className="text-center pt-8 text-white">If you are a cosigner, click to begin the <a className="underline" href="https://sf.privateloan.studentloan.org/Cosigner.do?execution=e1s1" rel="noreferrer noopener" target="_blank">addendum</a>.</p> */}
 				<p
-					className="text-center text-primary cursor-pointer font-bold my-4"
+					className="text-center text-white cursor-pointer font-bold my-4"
 					onClick={() => toggleDisclaimers(!disclaimers)}
 				>
 					Disclaimers
 				</p>
 				<Collapse isOpened={disclaimers} springConfig={{ stiffness: 150, damping: 40 }}>
 					<div>
-						<p>
+						<p className="text-white">
 							<strong>Before you begin, please read these important notes:</strong>
 						</p>
-						<p>Customer identification policy:</p>
-						<p>
+						<p className="text-white">Customer identification policy:</p>
+						<p className="text-white">
 							For the purpose of the following notice, the words "you" and "your" mean the Borrower and
 							the Cosigner. All applicants: Important Federal Law Notice - Important information about
 							procedures for opening a new account: To help the government fight the funding of terrorism
@@ -335,26 +334,26 @@ const LoanApp = React.forwardRef((props, ref) => {
 							and other information that will allow us to identify you. We may also ask to see your
 							driver's license or other identifying documents.
 						</p>
-						<p>Consent to share data:</p>
-						<p>
+						<p className="text-white">Consent to share data:</p>
+						<p className="text-white">
 							By clicking the box below and beginning the application, I consent under Federal and state
 							privacy laws to NIMAA providing to Skills Fund information related to my application,
 							enrollment, and completion, including but not limited to information contained in my
 							original application and supplements as well as information regarding my completion,
 							graduation, and post-program outcomes information.
 						</p>
-						<p>
+						<p className="text-white">
 							<strong>While in the application, please note:</strong>
 						</p>
-						<p>
+						<p className="text-white">
 							1. DO NOT use the browser Back button. Using the browser Back button may cause invalid
 							information and delay the processing of your loan.
 						</p>
-						<p>
+						<p className="text-white">
 							2. Your application will not be complete until it has been signed and submitted along with
 							any required documentation.
 						</p>
-						<p className="mb-0 pb-4">
+						<p className="mb-0 pb-4 text-white">
 							3. You will need the address and phone number of 3 references to complete your application,
 							including one relative not living with you. Others may be friends, employers, etc.
 						</p>
