@@ -382,7 +382,7 @@ const LoanCalculator = props => {
             ? "Make interest-only payments while in the program. Two months after completion, begin full payments."
             : "Start making full payments (interest + principal) about one month after disbursement."}
         </p>
-        <p className="font-bold text-xs text-center lg:hidden my-4">
+        <p className="font-bold text-xs text-center my-4">
           Enroll in Autopay to reduce your interest rate. Learn more{" "}
           <a
             href="https://skills.fund/frequently-asked-questions/#autopay"
