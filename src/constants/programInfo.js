@@ -157,6 +157,12 @@ export const faq = {
       colAmount: "$7,500",
     },
     {
+      programName: "Remote Full-Time",
+      maxAmount: "$15,980",
+      col: true,
+      colAmount: "$7,500",
+    },
+    {
       programName: "Remote Part-Time",
       maxAmount: "$15,980",
       col: false,
