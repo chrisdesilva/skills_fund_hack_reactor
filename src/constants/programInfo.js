@@ -15,24 +15,7 @@ export const schoolInfo = {
   interestOnly: [
     {
       // for multiple examples of interest only, add items to interestOnly array
-      programName:
-        "the Software Engineering Immersive and Remote Immersive programs",
-      APR36: "11.16%",
-      financeCharge36: "$3,440.47",
-      IOPayment36: "$116.87",
-      FullMonthlyPayment36: "$496.00",
-      APR60: "12.51%",
-      financeCharge60: "$6,060.59",
-      IOPayment60: "$142.87",
-      FullMonthlyPayment60: "$339.10",
-      LoanExampleAmt: "$15,000",
-      LoanExampleOFeeAmt: "$600",
-      LoanExampleAmtPlusOFee: "$15,600",
-      programLength: "3", // program length in months
-    },
-    {
-      // for multiple examples of interest only, add items to interestOnly array
-      programName: "the Remote Part-Time program",
+      programName: "",
       APR36: "10.76%",
       financeCharge36: "$4,141.69",
       IOPayment36: "$116.87",
@@ -41,25 +24,25 @@ export const schoolInfo = {
       financeCharge60: "$6,917.81",
       IOPayment60: "$142.87",
       FullMonthlyPayment60: "$339.10",
-      LoanExampleAmt: "$15,000",
-      LoanExampleOFeeAmt: "$600",
-      LoanExampleAmtPlusOFee: "$15,600",
+      LoanExampleAmt: "$10,000",
+      LoanExampleOFeeAmt: "$500",
+      LoanExampleAmtPlusOFee: "$10,500",
       programLength: "9", // program length in months
     },
   ],
   immediateRepayment: [
     {
       // for multiple examples of immmediate repayment, add items to immediateRepayment array
-      programName: "PROGRAM NAME",
-      APR36: "XX.XX%",
-      financeCharge36: "$X,XXX.XX",
-      FullMonthlyPayment36: "$XXX.XX",
-      APR60: "XX.XX%",
-      financeCharge60: "$X,XXX.XX",
-      FullMonthlyPayment60: "$XXX.XX",
+      programName: "",
+      APR36: "10.76%",
+      financeCharge36: "$4,141.69",
+      FullMonthlyPayment36: "$496.00",
+      APR60: "12.33%",
+      financeCharge60: "$6,917.81",
+      FullMonthlyPayment60: "$339.10",
       LoanExampleAmt: "$10,000",
-      LoanExampleOFeeAmt: "$400",
-      LoanExampleAmtPlusOFee: "$10,400",
+      LoanExampleOFeeAmt: "$500",
+      LoanExampleAmtPlusOFee: "$10,500",
     },
   ],
 }
@@ -131,7 +114,7 @@ export const faq = {
     "Software Engineering Immersive & Remote Immersive programs", // leave as empty string is cost of living availability is the same across all programs
   multCostOfLivingPrograms: true, // true if costOfLivingPrograms string has more than one program
   interestOnly: true, // true if interest-only payments are an option
-  immediateRepayment: false, // true if immediate repayment is an option
+  immediateRepayment: true, // true if immediate repayment is an option
   multipleLoanLengths: true, // true if 36 and 60 month options are both available
   multipleLoanTypes: false, // true if both IR and IO are available
   multiPrograms: true, // only true if there are multiple programs

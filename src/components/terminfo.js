@@ -24,43 +24,47 @@ const TermInfo = props => (
         APRRange60={interestRateCards.APR60}
       />
 
-      {/* {faq.interestOnly && schoolInfo.interestOnly.map(school => {
-                return <InterestOnlyTerms
-                programName={school.programName} 
-                loanExampleAmt={school.LoanExampleAmt}
-                APR36={school.APR36}
-                APR60={school.APR60}
-                finCharge36={school.financeCharge36}
-                finCharge60={school.financeCharge60}
-                ioPayment36={school.IOPayment36}
-                ioPayment60={school.IOPayment60}
-                fullPayment36={school.FullMonthlyPayment36}
-                fullPayment60={school.FullMonthlyPayment60}
-                oFee={school.LoanExampleOFeeAmt}
-                loanPlusOFee={school.LoanExampleAmtPlusOFee}
-                programLength={school.programLength}
-                multipleLoanLengths={faq.multipleLoanLengths}
+      {faq.interestOnly &&
+        schoolInfo.interestOnly.map(school => {
+          return (
+            <InterestOnlyTerms
+              programName={school.programName}
+              loanExampleAmt={school.LoanExampleAmt}
+              APR36={school.APR36}
+              APR60={school.APR60}
+              finCharge36={school.financeCharge36}
+              finCharge60={school.financeCharge60}
+              ioPayment36={school.IOPayment36}
+              ioPayment60={school.IOPayment60}
+              fullPayment36={school.FullMonthlyPayment36}
+              fullPayment60={school.FullMonthlyPayment60}
+              oFee={school.LoanExampleOFeeAmt}
+              loanPlusOFee={school.LoanExampleAmtPlusOFee}
+              programLength={school.programLength}
+              multipleLoanLengths={faq.multipleLoanLengths}
             />
-            })}
+          )
+        })}
 
-            {faq.immediateRepayment && schoolInfo.immediateRepayment.map(school => {
-                return <ImmRepaymentTerms
-                programName={school.programName} 
-                loanExampleAmt={school.LoanExampleAmt}
-                APR36={school.APR36}
-                APR60={school.APR60}
-                finCharge36={school.financeCharge36}
-                finCharge60={school.financeCharge60}
-                fullPayment36={school.FullMonthlyPayment36}
-                fullPayment60={school.FullMonthlyPayment60}
-                oFee={school.LoanExampleOFeeAmt}
-                loanPlusOFee={school.LoanExampleAmtPlusOFee}
-                multipleLoanLengths={faq.multipleLoanLengths}
-                multipleLoanTypes={faq.multipleLoanTypes}
+      {faq.immediateRepayment &&
+        schoolInfo.immediateRepayment.map(school => {
+          return (
+            <ImmRepaymentTerms
+              programName={school.programName}
+              loanExampleAmt={school.LoanExampleAmt}
+              APR36={school.APR36}
+              APR60={school.APR60}
+              finCharge36={school.financeCharge36}
+              finCharge60={school.financeCharge60}
+              fullPayment36={school.FullMonthlyPayment36}
+              fullPayment60={school.FullMonthlyPayment60}
+              oFee={school.LoanExampleOFeeAmt}
+              loanPlusOFee={school.LoanExampleAmtPlusOFee}
+              multipleLoanLengths={faq.multipleLoanLengths}
+              multipleLoanTypes={faq.multipleLoanTypes}
             />
-            })
-
-            } */}
+          )
+        })}
     </div>
   </div>
 )

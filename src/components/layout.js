@@ -27,19 +27,63 @@ const Layout = ({ children }) => {
         <footer className="text-center my-8">
           <div className="flex flex-col md:flex-row">
             <div className="w-full md:w-1/3">
-              <p className="uppercase mb-1"><a href="https://skills.fund/privacy-policy" target="_blank" rel="noreferrer noopener" className="footerLink">privacy policy</a></p>
-              <p className="uppercase"><a href="https://skills.fund/terms-of-use" target="_blank" rel="noreferrer noopener" className="footerLink">terms of use</a></p>
+              <p className="uppercase mb-1">
+                <a
+                  href="https://skills.fund/privacy-policy"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="footerLink"
+                >
+                  privacy policy
+                </a>
+              </p>
+              <p className="uppercase">
+                <a
+                  href="https://skills.fund/terms-of-use"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="footerLink"
+                >
+                  terms of use
+                </a>
+              </p>
             </div>
             <div className="w-full mb-5 md:mb-0 md:w-1/3 flex items-center justify-center">
-              <a href="https://twitter.com/skills_fund" target="_blank" rel="noreferrer noopener" className="footerLink mx-4 text-2xl"><FaTwitter/></a>
-              <a href="https://www.facebook.com/SkillsFundEd/" target="_blank" rel="noreferrer noopener" className="footerLink mx-4 text-2xl"><FaFacebookF /></a>
+              <a
+                href="https://twitter.com/skills_fund"
+                target="_blank"
+                rel="noreferrer noopener"
+                className="footerLink mx-4 text-2xl"
+              >
+                <FaTwitter />
+              </a>
+              <a
+                href="https://www.facebook.com/SkillsFundEd/"
+                target="_blank"
+                rel="noreferrer noopener"
+                className="footerLink mx-4 text-2xl"
+              >
+                <FaFacebookF />
+              </a>
             </div>
             <div className="w-full md:w-1/3">
               <p className="mb-1">Customer Service:</p>
-              <p><a href="mailto:customertrust@skills.fund" className="footerLink">CustomerTrust@skills.fund</a></p>
+              <p>
+                <a
+                  href="mailto:customertrust@skills.fund"
+                  className="footerLink"
+                >
+                  CustomerTrust@skills.fund
+                </a>
+              </p>
             </div>
           </div>
-          <p>© 2015-{new Date().getFullYear()}, Skills Fund, LLC</p>
+          <p className="mb-0">
+            © 2015-{new Date().getFullYear()}, Skills Fund, LLC
+          </p>
+          <p>
+            500 East 4th Street, Suite 304, Austin, Texas 78701, United States
+          </p>
         </footer>
       </div>
     </>
