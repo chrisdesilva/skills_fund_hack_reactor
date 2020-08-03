@@ -102,14 +102,14 @@ const InterestOnlyTerms = props => (
         <li>(2) Interest rates are fixed and never vary.</li>
         <li>
           (3) Program completion dates are determined by the school, and full
-          repayment begins 2 months after that date.
+          repayment begins 3 months after that date.
         </li>
         <li>
           (4) Annual Percentage Rate (APR): Finance charge and monthly payments
           are estimated based upon borrowing {props.loanExampleAmt}, a 5.0%
           origination fee, paying interest on the loan for {props.programLength}{" "}
-          months while enrolled in the program and for a two-month grace period,
-          then the 36-month principal and interest period.
+          months while enrolled in the program and for a three-month grace
+          period, then the 36-month principal and interest period.
         </li>
         {props.multipleLoanLengths && (
           <li>
@@ -117,7 +117,7 @@ const InterestOnlyTerms = props => (
             payments are estimated based upon borrowing {props.loanExampleAmt},
             a 5.0% origination fee, paying interest on the loan for{" "}
             {props.programLength} months while enrolled in the program and for a
-            two-month grace period, then the 60-month principal and interest
+            three-month grace period, then the 60-month principal and interest
             period.
           </li>
         )}
@@ -235,14 +235,14 @@ const InterestOnlyTerms = props => (
         <li>(2) Interest rates are fixed and never vary.</li>
         <li>
           (3) Program completion dates are determined by the school, and full
-          repayment begins 2 months after that date.
+          repayment begins 3 months after that date.
         </li>
         <li>
           (4) Annual Percentage Rate (APR): Finance charge and monthly payments
           are estimated based upon borrowing {props.loanExampleAmt}, a 5.0%
           origination fee, paying interest on the loan for {props.programLength}{" "}
-          months while enrolled in the program and for a two-month grace period,
-          then the 36-month principal and interest period.
+          months while enrolled in the program and for a three-month grace
+          period, then the 36-month principal and interest period.
         </li>
         {props.multipleLoanLengths && (
           <li>
@@ -250,7 +250,7 @@ const InterestOnlyTerms = props => (
             payments are estimated based upon borrowing {props.loanExampleAmt},
             a 5.0% origination fee, paying interest on the loan for{" "}
             {props.programLength} months while enrolled in the program and for a
-            two-month grace period, then the 60-month principal and interest
+            three-month grace period, then the 60-month principal and interest
             period.
           </li>
         )}
