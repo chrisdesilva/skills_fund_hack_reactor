@@ -23,6 +23,8 @@ const LoanApp = React.forwardRef((props, ref) => {
   const formName = `${props.schoolName}_apply_now program-apply flex flex-col items-center`
   const costOfLiving = faq.costOfLiving
 
+  const { currentSchool, setCurrentSchool } = props
+
   const handleChange = e => {
     setEmail(e.target.value)
   }
@@ -45,6 +47,11 @@ const LoanApp = React.forwardRef((props, ref) => {
     () => {
       setLoanUrl(programLoanInfo[activeIndex]["url"])
       setProgramName(programLoanInfo[activeIndex]["name"])
+      if (activeIndex === 0 || activeIndex === 1 || activeIndex === 2) {
+        setCurrentSchool("Hack Reactor")
+      } else {
+        setCurrentSchool("Galvanize")
+      }
     },
     [activeIndex]
   )
@@ -97,7 +104,7 @@ const LoanApp = React.forwardRef((props, ref) => {
         },
         {
           name: "school",
-          value: `${props.schoolName}`,
+          value: `${currentSchool}`,
         },
         {
           name: "student_loan_application_status",
@@ -167,7 +174,7 @@ const LoanApp = React.forwardRef((props, ref) => {
               required
             />
             <p className="text-center text-sm mb-0">
-              Select your {props.schoolName} program
+              Select your Galvanize or Hack Reactor program
             </p>
             <select
               id="programSelect"

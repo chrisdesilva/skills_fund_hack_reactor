@@ -16,7 +16,7 @@ const Banner = props => {
       {/* update h2 caps words with school-specific content */}
       <h1 className="text-3xl lg:text-4xl font-bold text-center text-gray-800 px-4">
         {applicationsLive
-          ? `Fund Your Future with a Loan to ${schoolName}`
+          ? `Fund Your Future with a Loan to Galvanize or Hack Reactor`
           : `Applications for ${schoolName}'s next cohort will be available beginning ${nextCohortStartDate}`}
       </h1>
       {/* {applicationsLive && (

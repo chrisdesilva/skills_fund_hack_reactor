@@ -28,7 +28,7 @@ const ApplyFooter = props => {
             We'll send you our step-by-step guide to paying for your program.
           </p>
         </div>
-        <LeadCaptureForm IP={props.IP} />
+        <LeadCaptureForm IP={props.IP} currentSchool={props.currentSchool} />
       </div>
     </div>
   )

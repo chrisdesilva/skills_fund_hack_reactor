@@ -134,22 +134,47 @@ export const faq = {
   // max loan amounts by program for faq1
   loanRange: [
     {
-      programName: "Software Engineering Immersive and Remote Immersive",
+      programName:
+        "Hack Reactor's Software Engineering Immersive and Remote Immersive",
       maxAmount: "$15,980",
       col: true,
       colAmount: "$7,500",
     },
     {
-      programName: "Remote Full-Time",
+      programName: "Hack Reactor's Remote Full-Time",
       maxAmount: "$15,980",
       col: true,
       colAmount: "$7,500",
     },
     {
-      programName: "Remote Part-Time",
+      programName: "Hack Reactor's Remote Part-Time",
       maxAmount: "$15,980",
       col: false,
       colAmount: "$6,000",
+    },
+    {
+      programName: "Galvanize's Software Engineering Immersive",
+      maxAmount: "$15,980",
+      col: true,
+      colAmount: "$12,000, depending on your metro,",
+    },
+    {
+      programName: "Galvanize's Data Science Immersive",
+      maxAmount: "$15,980",
+      col: true,
+      colAmount: "$12,000, depending on your metro,",
+    },
+    {
+      programName: "Galvanize's Remote Data Science",
+      maxAmount: "$15,980",
+      col: true,
+      colAmount: "$9,000",
+    },
+    {
+      programName: "Galvanize's Remote Data Science - Part-Time",
+      maxAmount: "$15,980",
+      col: false,
+      colAmount: "$9,000",
     },
   ],
 }
@@ -160,11 +185,11 @@ export const faq = {
 
 export const schoolLogo = logo // go to header.js if height needs adjustment
 
-export const schoolName = "Hack Reactor"
+export const schoolName = "Galvanize and Hack Reactor"
 
 export const schoolURL = "https://www.hackreactor.com/" // update with url of school's website
 
-export const skfURL = "https://hackreactor.skills.fund/" // update with Skills Fund url
+export const skfURL = "https://galvanizehackreactor.skills.fund/" // update with Skills Fund url
 
 export const headline = "Learn to Code at Hack Reactor" // update headline as appropriate
 
@@ -208,7 +233,7 @@ export const moreThanSixPrograms = false // set to true if there are 7 or more p
 export const programLoanInfo = [
   // update with program names and corresponding loan URLs with market segment code from Master Loan Parameters
   {
-    name: "Software Engineering Immersive",
+    name: "Software Engineering Immersive (Hack Reactor)",
     url: "https://my.skills.fund/application?lenderCode=SKHRSEA18",
     loanInfo: {
       // match loanInfo in first metro below
@@ -277,7 +302,7 @@ export const programLoanInfo = [
     ],
   },
   {
-    name: "Remote Immersive",
+    name: "Remote Immersive (Hack Reactor)",
     url: "https://my.skills.fund/application?lenderCode=SKHRRFTB18",
     loanInfo: {
       // match loanInfo in first metro below
@@ -329,7 +354,7 @@ export const programLoanInfo = [
     ],
   },
   {
-    name: "Remote Part-Time",
+    name: "Remote Part-Time (Hack Reactor)",
     url: "https://my.skills.fund/application?lenderCode=SKHRRPTA18",
     loanInfo: {
       // match loanInfo in first metro below
@@ -391,6 +416,514 @@ export const programLoanInfo = [
             k: 5,
             apr36: 11.16,
             apr60: 12.51,
+          },
+          "Immediate Repayment": {
+            apr36: 11.25,
+            apr60: 12.55,
+          },
+        },
+      },
+    ],
+  },
+  {
+    name: "Software Engineering Immersive (Galvanize)",
+    url: "https://my.skills.fund/application?lenderCode=SKGWD18",
+    loanInfo: {
+      // match loanInfo in first metro below
+      maxLoanAmt: 24980,
+      loanTerm36: true,
+      loanTerm60: true,
+      "Interest Only": {
+        // interest-only
+        k: 6,
+        apr36: 11.59,
+        apr60: 12.84,
+      },
+      "Immediate Repayment": null, // immediate repayment
+    },
+    defaultLoanType: "Interest Only", // leave at 0 for interest-only, set to 1 for immediate repayment
+    showMetros: true, // true if there are multiple metros with different tuition amounts for the same program
+    showLoanTypes: false, // true if both IR and IO are available
+    loanTypes: ["Interest Only"],
+    locations: [
+      "Austin",
+      "Boulder",
+      "Los Angeles",
+      "New York",
+      "Phoenix",
+      "Platte",
+      "San Francisco",
+      "Seattle",
+    ],
+    metros: [
+      // list in same order as locations array above
+      {
+        location: "Austin",
+        loanInfo: {
+          // // match loanInfo to Program 1 above
+          maxLoanAmt: 24980,
+          loanTerm36: true,
+          loanTerm60: true,
+          "Interest Only": {
+            k: 6,
+            apr36: 11.59,
+            apr60: 12.84,
+          },
+          "Immediate Repayment": null,
+        },
+      },
+      {
+        location: "Boulder",
+        loanInfo: {
+          maxLoanAmt: 24980,
+          loanTerm36: true,
+          loanTerm60: true,
+          "Interest Only": {
+            k: 6,
+            apr36: 11.59,
+            apr60: 12.84,
+          },
+          "Immediate Repayment": null,
+        },
+      },
+      {
+        location: "Los Angeles",
+        loanInfo: {
+          maxLoanAmt: 24980,
+          loanTerm36: true,
+          loanTerm60: true,
+          "Interest Only": {
+            k: 6,
+            apr36: 11.59,
+            apr60: 12.84,
+          },
+          "Immediate Repayment": null,
+        },
+      },
+      {
+        location: "New York",
+        loanInfo: {
+          maxLoanAmt: 27980,
+          loanTerm36: true,
+          loanTerm60: true,
+          "Interest Only": {
+            k: 6,
+            apr36: 11.59,
+            apr60: 12.84,
+          },
+          "Immediate Repayment": null,
+        },
+      },
+      {
+        location: "Phoenix",
+        loanInfo: {
+          maxLoanAmt: 24980,
+          loanTerm36: true,
+          loanTerm60: true,
+          "Interest Only": {
+            k: 6,
+            apr36: 11.59,
+            apr60: 12.84,
+          },
+          "Immediate Repayment": null,
+        },
+      },
+      {
+        location: "Platte",
+        loanInfo: {
+          maxLoanAmt: 24980,
+          loanTerm36: true,
+          loanTerm60: true,
+          "Interest Only": {
+            k: 6,
+            apr36: 11.59,
+            apr60: 12.84,
+          },
+          "Immediate Repayment": null,
+        },
+      },
+      {
+        location: "San Francisco",
+        loanInfo: {
+          maxLoanAmt: 27980,
+          loanTerm36: true,
+          loanTerm60: true,
+          "Interest Only": {
+            k: 6,
+            apr36: 11.59,
+            apr60: 12.84,
+          },
+          "Immediate Repayment": null,
+        },
+      },
+      {
+        location: "Seattle",
+        loanInfo: {
+          maxLoanAmt: 27980,
+          loanTerm36: true,
+          loanTerm60: true,
+          "Interest Only": {
+            k: 6,
+            apr36: 11.59,
+            apr60: 12.84,
+          },
+          "Immediate Repayment": null,
+        },
+      },
+    ],
+  },
+  {
+    name: "Data Science Immersive (Galvanize)",
+    url: "https://my.skills.fund/application?lenderCode=SKGDS18",
+    loanInfo: {
+      // match loanInfo in first metro below
+      maxLoanAmt: 24980,
+      loanTerm36: true,
+      loanTerm60: true,
+      "Interest Only": {
+        k: 6,
+        apr36: 11.59,
+        apr60: 12.84,
+      },
+      "Immediate Repayment": null,
+    },
+    defaultLoanType: "Interest Only", // leave at 0 for interest-only, set to 1 for immediate repayment
+    showMetros: true,
+    showLoanTypes: false,
+    loanTypes: ["Interest Only"],
+    locations: [
+      "Austin",
+      "Boulder",
+      "Los Angeles",
+      "New York",
+      "Phoenix",
+      "Platte",
+      "San Francisco",
+      "Seattle",
+    ],
+    metros: [
+      {
+        location: "Austin",
+        loanInfo: {
+          // match loanInfo to Program 2 loanInfo above
+          maxLoanAmt: 24980,
+          loanTerm36: true,
+          loanTerm60: true,
+          "Interest Only": {
+            k: 6,
+            apr36: 11.59,
+            apr60: 12.84,
+          },
+          "Immediate Repayment": null,
+        },
+      },
+      {
+        location: "Boulder",
+        loanInfo: {
+          maxLoanAmt: 24980,
+          loanTerm36: true,
+          loanTerm60: true,
+          "Interest Only": {
+            k: 6,
+            apr36: 11.59,
+            apr60: 12.84,
+          },
+          "Immediate Repayment": null,
+        },
+      },
+      {
+        location: "Los Angeles",
+        loanInfo: {
+          maxLoanAmt: 24980,
+          loanTerm36: true,
+          loanTerm60: true,
+          "Interest Only": {
+            k: 6,
+            apr36: 11.59,
+            apr60: 12.84,
+          },
+          "Immediate Repayment": null,
+        },
+      },
+      {
+        location: "New York",
+        loanInfo: {
+          maxLoanAmt: 27980,
+          loanTerm36: true,
+          loanTerm60: true,
+          "Interest Only": {
+            k: 6,
+            apr36: 11.59,
+            apr60: 12.84,
+          },
+          "Immediate Repayment": null,
+        },
+      },
+      {
+        location: "Phoenix",
+        loanInfo: {
+          maxLoanAmt: 24980,
+          loanTerm36: true,
+          loanTerm60: true,
+          "Interest Only": {
+            k: 6,
+            apr36: 11.59,
+            apr60: 12.84,
+          },
+          "Immediate Repayment": null,
+        },
+      },
+      {
+        location: "Platte",
+        loanInfo: {
+          maxLoanAmt: 24980,
+          loanTerm36: true,
+          loanTerm60: true,
+          "Interest Only": {
+            k: 6,
+            apr36: 11.59,
+            apr60: 12.84,
+          },
+          "Immediate Repayment": null,
+        },
+      },
+      {
+        location: "San Francisco",
+        loanInfo: {
+          maxLoanAmt: 27980,
+          loanTerm36: true,
+          loanTerm60: true,
+          "Interest Only": {
+            k: 6,
+            apr36: 11.59,
+            apr60: 12.84,
+          },
+          "Immediate Repayment": null,
+        },
+      },
+      {
+        location: "Seattle",
+        loanInfo: {
+          maxLoanAmt: 27980,
+          loanTerm36: true,
+          loanTerm60: true,
+          "Interest Only": {
+            k: 6,
+            apr36: 11.59,
+            apr60: 12.84,
+          },
+          "Immediate Repayment": null,
+        },
+      },
+    ],
+  },
+  // {
+  //   name: "Remote Software Engineering Immersive",
+  //   url: "https://my.skills.fund/application?lenderCode=SKGALRE19",
+  //   loanInfo: {
+  //     // match loanInfo in first metro below
+  //     maxLoanAmt: 17980,
+  //     loanTerm36: true,
+  //     loanTerm60: true,
+  //     "Interest Only": {
+  //       k: 6,
+  //       apr36: 11.59,
+  //       apr60: 12.84,
+  //     },
+  //     "Immediate Repayment": null,
+  //   },
+  //   defaultLoanType: "Interest Only", // leave at 0 for interest-only, set to 1 for immediate repayment
+  //   showMetros: false,
+  //   showLoanTypes: false,
+  // loanTypes: ["Interest Only"],
+  // locations: ["Metro A", "Metro B", "Metro C"],
+  //   metros: [
+  //     {
+  //       location: "Metro A",
+  //       loanInfo: {
+  //         // match loanInfo to Program 3 loanInfo above
+  //         maxLoanAmt: 17980,
+  //         loanTerm36: true,
+  //         loanTerm60: true,
+  //         "Interest Only": {
+  //           k: 6,
+  //           apr36: 11.59,
+  //           apr60: 12.84,
+  //         },
+  //         "Immediate Repayment": null,
+  //       },
+  //     },
+  //     {
+  //       location: "Metro B",
+  //       loanInfo: {
+  //         maxLoanAmt: 15545,
+  //         loanTerm36: true,
+  //         loanTerm60: true,
+  //         "Interest Only": {
+  //           k: 6,
+  //           apr36: 11.59,
+  //           apr60: 12.84,
+  //         },
+  //         "Immediate Repayment": {
+  //           apr36: 11.25,
+  //           apr60: 12.55,
+  //         },
+  //       },
+  //     },
+  //     {
+  //       location: "Metro C",
+  //       loanInfo: {
+  //         maxLoanAmt: 28500,
+  //         loanTerm36: true,
+  //         loanTerm60: true,
+  //         "Interest Only": {
+  //           k: 6,
+  //           apr36: 11.59,
+  //           apr60: 12.84,
+  //         },
+  //         "Immediate Repayment": {
+  //           apr36: 11.25,
+  //           apr60: 12.55,
+  //         },
+  //       },
+  //     },
+  //   ],
+  // },
+  {
+    name: "Remote Data Science Immersive (Galvanize)",
+    url: "https://my.skills.fund/application?lenderCode=SKGALRE19",
+    loanInfo: {
+      // match loanInfo in first metro below
+      maxLoanAmt: 24980,
+      loanTerm36: true,
+      loanTerm60: true,
+      "Interest Only": {
+        k: 6,
+        apr36: 11.59,
+        apr60: 12.84,
+      },
+      "Immediate Repayment": null,
+    },
+    defaultLoanType: "Interest Only", // leave at 0 for interest-only, set to 1 for immediate repayment
+    showMetros: false,
+    showLoanTypes: false,
+    loanTypes: ["Interest Only"],
+    locations: ["Metro A", "Metro B", "Metro C"],
+    metros: [
+      {
+        location: "Metro A",
+        loanInfo: {
+          // match loanInfo to Program 3 loanInfo above
+          maxLoanAmt: 24980,
+          loanTerm36: true,
+          loanTerm60: true,
+          "Interest Only": {
+            k: 6,
+            apr36: 11.59,
+            apr60: 12.84,
+          },
+          "Immediate Repayment": null,
+        },
+      },
+      {
+        location: "Metro B",
+        loanInfo: {
+          maxLoanAmt: 15545,
+          loanTerm36: true,
+          loanTerm60: true,
+          "Interest Only": {
+            k: 6,
+            apr36: 11.59,
+            apr60: 12.84,
+          },
+          "Immediate Repayment": {
+            apr36: 11.25,
+            apr60: 12.55,
+          },
+        },
+      },
+      {
+        location: "Metro C",
+        loanInfo: {
+          maxLoanAmt: 20545,
+          loanTerm36: true,
+          loanTerm60: true,
+          "Interest Only": {
+            k: 6,
+            apr36: 11.59,
+            apr60: 12.84,
+          },
+          "Immediate Repayment": {
+            apr36: 11.25,
+            apr60: 12.55,
+          },
+        },
+      },
+    ],
+  },
+  {
+    name: "Remote Data Science Part-Time (Galvanize)",
+    url: "https://my.skills.fund/application?lenderCode=SKGRDSPT20",
+    loanInfo: {
+      // match loanInfo in first metro below
+      maxLoanAmt: 24980,
+      loanTerm36: true,
+      loanTerm60: true,
+      "Interest Only": {
+        k: 6,
+        apr36: 11.59,
+        apr60: 12.84,
+      },
+      "Immediate Repayment": null,
+    },
+    defaultLoanType: "Interest Only", // leave at 0 for interest-only, set to 1 for immediate repayment
+    showMetros: false,
+    showLoanTypes: false,
+    loanTypes: ["Interest Only"],
+    locations: ["Metro A", "Metro B", "Metro C"],
+    metros: [
+      {
+        location: "Metro A",
+        loanInfo: {
+          // match loanInfo to Program 3 loanInfo above
+          maxLoanAmt: 24980,
+          loanTerm36: true,
+          loanTerm60: true,
+          "Interest Only": {
+            k: 6,
+            apr36: 11.59,
+            apr60: 12.84,
+          },
+          "Immediate Repayment": null,
+        },
+      },
+      {
+        location: "Metro B",
+        loanInfo: {
+          maxLoanAmt: 15545,
+          loanTerm36: true,
+          loanTerm60: true,
+          "Interest Only": {
+            k: 6,
+            apr36: 11.59,
+            apr60: 12.84,
+          },
+          "Immediate Repayment": {
+            apr36: 11.25,
+            apr60: 12.55,
+          },
+        },
+      },
+      {
+        location: "Metro C",
+        loanInfo: {
+          maxLoanAmt: 20545,
+          loanTerm36: true,
+          loanTerm60: true,
+          "Interest Only": {
+            k: 6,
+            apr36: 11.59,
+            apr60: 12.84,
           },
           "Immediate Repayment": {
             apr36: 11.25,

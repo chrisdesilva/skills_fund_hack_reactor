@@ -153,6 +153,8 @@ class Homepage extends React.Component {
             IP={this.props.IP}
             pageUri={this.props.pageUri}
             schoolName={this.props.schoolName}
+            setCurrentSchool={this.props.setCurrentSchool}
+            currentSchool={this.props.currentSchool}
           />
         ) : (
           <DisabledApplication
@@ -195,7 +197,11 @@ class Homepage extends React.Component {
           <ContactForm formName={this.props.formName} />
         </Collapse>
         <CookieBanner />
-        <ApplyFooter onClick={this.scrollToApply} IP={this.props.IP} />
+        <ApplyFooter
+          onClick={this.scrollToApply}
+          IP={this.props.IP}
+          currentSchool={this.props.currentSchool}
+        />
       </Layout>
     )
   }

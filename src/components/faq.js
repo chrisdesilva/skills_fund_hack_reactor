@@ -62,7 +62,7 @@ const FAQ = () => {
           <p className="mb-0 pb-4">
             <strong>Please note:</strong> In order to finance cost of living,
             borrow at least $2,000 in tuition financing. You will pay your cash
-            deposit directly to <strong>{schoolName}</strong>.
+            deposit directly to <strong>Galvanize or Hack Reactor</strong>.
           </p>
         )}
       </Collapse>
