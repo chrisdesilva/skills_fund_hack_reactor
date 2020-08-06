@@ -1,4 +1,4 @@
-import logo from "../images/logo_hackreactor.png" // add school logo to images folder and import here
+import logo from "../images/logo_galvanize.png" // add school logo to images folder and import here
 export const applicationsLive = true // set to false if not currently accepting applications
 export const disabledLoanAppFormID = "69140c47-bb03-4a1b-b674-cc136fdea23d" // Hubspot ID for all disabled apply now lead captures
 export const nextCohortStartDate = "October 29, 2019"
@@ -111,7 +111,7 @@ export const faq = {
   // faq section
   costOfLiving: true, // true if at least one program has cost of living included
   costOfLivingPrograms:
-    "Software Engineering Immersive & Remote Immersive programs", // leave as empty string is cost of living availability is the same across all programs
+    "Software Engineering Immersive, Remote Immersive, Remote Full-Time, Data Science Immersive, and Remote Data Science programs", // leave as empty string is cost of living availability is the same across all programs
   multCostOfLivingPrograms: true, // true if costOfLivingPrograms string has more than one program
   interestOnly: true, // true if interest-only payments are an option
   immediateRepayment: true, // true if immediate repayment is an option
